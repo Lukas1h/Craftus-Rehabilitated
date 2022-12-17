@@ -14,7 +14,14 @@
 
 #define CHUNKPOOL_SIZE (CHUNKCACHE_SIZE * CHUNKCACHE_SIZE + UNDEADCHUNKS_COUNT)
 
-typedef enum { WorldGen_Smea, WorldGen_SuperFlat, WorldGenTypes_Count } WorldGenType;
+typedef enum
+{
+	WorldGen_Smea,
+	WorldGen_SuperFlat,
+	WorldGen_Test,
+	WorldGenTypes_Count
+} WorldGenType;
+
 typedef struct {
 	uint64_t seed;
 	WorldGenType type;

@@ -15,7 +15,7 @@ void SmeaGen_Generate(WorkQueue* queue, WorkerItem item, void* this) {
 			const int smeasClusterSize = 8;
 			const int smeasChunkHeight = 16;
 			int height = (int)(sino_2d((px) / (smeasClusterSize * 4), (pz) / (smeasClusterSize * 4)) * smeasClusterSize) +
-				     (smeasChunkHeight * smeasClusterSize / 2);
+				     (5 * smeasClusterSize / 1);
 
 			for (int y = 0; y < height - 3; y++) {
 				Chunk_SetBlock(item.chunk, x, y, z, Block_Stone);
@@ -24,6 +24,13 @@ void SmeaGen_Generate(WorkQueue* queue, WorkerItem item, void* this) {
 				Chunk_SetBlock(item.chunk, x, y, z, Block_Dirt);
 			}
 			Chunk_SetBlock(item.chunk, x, height, z, Block_Grass);
+			if (x == random_number(3, CHUNK_SIZE - 3))
+			{
+				if (z == random_number(3, CHUNK_SIZE - 3))
+				{
+					Chunk_MakeTree(item, x, height, z);
+				}
+			}
 		}
 	}
 }

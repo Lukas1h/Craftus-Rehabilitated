@@ -110,7 +110,7 @@ static bool canceled_deletion = false;
 
 static WorldGenType worldGenType = WorldGen_SuperFlat;
 
-static char* worldGenTypesStr[] = {"Smea", "Superflat"};
+static char* worldGenTypesStr[] = {"Smea", "Superflat","Test"};
 
 static MenuState menustate = MenuState_SelectWorld;
 

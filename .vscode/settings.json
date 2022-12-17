@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.hasm": "log",
+        "testgen.h": "c",
+        "workqueue.h": "c"
+    }
+}

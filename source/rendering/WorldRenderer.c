@@ -204,6 +204,17 @@ void WorldRenderer_Render(float iod) {
 	Hand_Draw(projectionUniform, &camera.projection, player->quickSelectBar[player->quickSelectBarSlot], player);
 	C3D_TexBind(0, Block_GetTextureMap());
 
+	static C3D_Mtx material =
+	{
+		{
+			{{0.0f, 0.2f, 0.2f, 0.2f}}, // Ambient
+			{{0.0f, 0.4f, 0.4f, 0.4f}}, // Diffuse
+			{{0.0f, 0.8f, 0.8f, 0.8f}}, // Specular
+			{{1.0f, 0.0f, 0.0f, 0.0f}}, // Emission
+		}};
+
+	// int uLoc_material = shaderInstanceGetUniformLocation(program.vertexShader, "material");
+	// C3D_FVUnifMtx4x4(GPU_VERTEX_SHADER, uLoc_material, &camera.vp);
 	C3D_FVUnifMtx4x4(GPU_VERTEX_SHADER, projectionUniform, &camera.vp);
 
 	renderWorld();

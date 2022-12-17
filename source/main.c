@@ -19,6 +19,7 @@
 #include <world/savegame/SuperChunk.h>
 #include <world/worldgen/SmeaGen.h>
 #include <world/worldgen/SuperFlatGen.h>
+#include <world/worldgen/TestGen.h>
 
 #include <sino/sino.h>
 
@@ -49,6 +50,7 @@ int main() {
 
 	SuperFlatGen flatGen;
 	SmeaGen smeaGen;
+	TestGen testGen;
 
 	SuperChunk_InitPools();
 
@@ -59,6 +61,7 @@ int main() {
 	ChunkWorker_AddHandler(&chunkWorker, WorkerItemType_PolyGen, (WorkerFuncObj){&PolyGen_GeneratePolygons, NULL, true});
 	ChunkWorker_AddHandler(&chunkWorker, WorkerItemType_BaseGen, (WorkerFuncObj){&SuperFlatGen_Generate, &flatGen, true});
 	ChunkWorker_AddHandler(&chunkWorker, WorkerItemType_BaseGen, (WorkerFuncObj){&SmeaGen_Generate, &smeaGen, true});
+	ChunkWorker_AddHandler(&chunkWorker, WorkerItemType_BaseGen, (WorkerFuncObj){&TestGen_Generate, &testGen, true});
 
 	sino_init();
 
@@ -70,6 +73,7 @@ int main() {
 
 	SuperFlatGen_Init(&flatGen, world);
 	SmeaGen_Init(&smeaGen, world);
+	TestGen_Init(&testGen, world);
 
 	Renderer_Init(world, &player, &chunkWorker.queue, &gamestate);
 

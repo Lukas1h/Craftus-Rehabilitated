@@ -1,9 +1,25 @@
 ; Constants
 .constf myconst(0.0, 1.0, 0.0000305185094759, 0.00392156862745)
+.constf mysec(0.00156862745,0.01,0.00156862745,0.00156862745)
+
+;Light min = 0.0001
+;Light max = 0.0040
+;
+;	  0.00  01
+;	  0.00	40
+
+; (255 * magicNum) 
+;
+
+
+
 ;.alias  zeros 	myconst.xxxx ; Vector full of zeros
 .alias  ones  	myconst.yyyy ; Vector full of ones
 .alias	div2p15	myconst.zzzz
 .alias	div255	myconst.wwww
+
+.alias magicNum mysec.xxxx
+.alias magicMul mysec.yyyy
 
 ; Uniforms
 .fvec projection[4]
@@ -32,6 +48,8 @@
 	dp4 out_position.w, projection[3], r0
 
 	mul out_uv, div2p15, in_uv.xy
+
+
 
 	mul out_color.xyz, div255, in_rgb.xyz
 	mov out_color.w, ones
